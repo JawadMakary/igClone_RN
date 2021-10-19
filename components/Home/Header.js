@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginHorizontal: 20,
+    marginTop: "13%",
   },
   iconContainer: {
     flexDirection: "row",

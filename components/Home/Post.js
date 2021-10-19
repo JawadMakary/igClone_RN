@@ -6,6 +6,7 @@ export default function Post({ post }) {
     <View style={{ marginBottom: 30 }}>
       {/* <Divider width={1} orientation="vertical" /> */}
       <PostHeader post={post} />
+      <PostImage post={post} />
     </View>
   );
 }
@@ -25,6 +26,14 @@ const PostHeader = ({ post }) => (
       </Text>
     </View>
     <Text style={{ color: "#fff", fontWeight: "900" }}> ...</Text>
+  </View>
+);
+const PostImage = ({ post }) => (
+  <View>
+    <Image
+      source={{ uri: post.imageUrl }}
+      style={{ height: "100%", resizeMode: "cover" }}
+    />
   </View>
 );
 const styles = StyleSheet.create({
