@@ -14,7 +14,7 @@ export default function Header() {
         <TouchableOpacity>
           <Image
             source={{
-              uri: "https://th.bing.com/th/id/R.988a69e0d56c8a348f9e3e5337845bd2?rik=HmNemvm8zTGtag&pid=ImgRaw&r=0",
+              uri: "https://img.icons8.com/fluency-systems-regular/48/ffffff/plus.png",
             }}
             style={styles.icon}
           />
@@ -22,7 +22,7 @@ export default function Header() {
         <TouchableOpacity>
           <Image
             source={{
-              uri: "https://th.bing.com/th/id/R.b6ef5d0b91a55520a0ccd9b3e4865626?rik=B9FFgMopaNZbWQ&riu=http%3a%2f%2fclipart-library.com%2fimg%2f1707272.png&ehk=qkh7ebv6bcW1qVC3OmCCf1AVLuMTxNK%2foILSmYW%2fZho%3d&risl=&pid=ImgRaw&r=0",
+              uri: "https://img.icons8.com/fluency-systems-regular/48/ffffff/like.png",
             }}
             style={styles.icon}
           />
@@ -33,7 +33,7 @@ export default function Header() {
           </View>
           <Image
             source={{
-              uri: "https://th.bing.com/th/id/R.f54e3578afef4f3120724313b6207b78?rik=SrHzmad4BNuzjg&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2009%2f11%2fwhite-email-icon-transparent_249395.png&ehk=l89VTQ3nQSPzERuKzyGrzeF1Gr5lpuphZntDMzsnjYc%3d&risl=&pid=ImgRaw&r=0",
+              uri: "https://img.icons8.com/fluency-systems-regular/48/ffffff/speech-bubble-with-dots.png",
             }}
             style={styles.icon}
           />
