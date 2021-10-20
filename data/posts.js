@@ -23,7 +23,7 @@ export const POSTS = [
     imageUrl:
       "https://img.xcitefun.net/users/2013/11/345649,xcitefun-snake-river-6.jpg",
     user: USERS[2].user,
-    likes: 100,
+    likes: 300,
     caption: "loremdssdsd ipsum",
     profile_picture: USERS[0].image,
     comments: [
