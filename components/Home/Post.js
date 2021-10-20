@@ -1,12 +1,40 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Divider } from "react-native-elements";
 // npm i react-native-elements
+const postFooterIcons = [
+  {
+    name: "Like",
+    imageUrl:
+      "https://img.icons8.com/fluency-systems-regular/48/ffffff/like.png",
+    likedImgUrl:
+      "https://img.icons8.com/fluency-systems-regular/48/fa314a/like.png",
+  },
+  {
+    name: "Comment",
+    imageUrl:
+      "https://img.icons8.com/fluency-systems-regular/48/ffffff/comments--v1.png",
+  },
+  {
+    name: "Share",
+    imageUrl:
+      "https://img.icons8.com/fluency-systems-regular/48/ffffff/share.png",
+  },
+  {
+    name: "Save",
+    imageUrl:
+      "https://img.icons8.com/fluency-systems-regular/48/ffffff/bookmark-ribbon--v1.png",
+  },
+];
 export default function Post({ post }) {
   return (
     <View style={{ marginBottom: 30 }}>
-      {/* <Divider width={1} orientation="vertical" /> */}
+      <Divider width={1} orientation="vertical" />
       <PostHeader post={post} />
       <PostImage post={post} />
+      <View style={{ marginHorizontal: 15, marginTop: 10 }}>
+        <PostFooter />
+      </View>
     </View>
   );
 }
@@ -36,6 +64,23 @@ const PostImage = ({ post }) => (
     />
   </View>
 );
+const PostFooter = () => (
+  <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+    <View style={styles.leftFooterIconsContainer}>
+      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[0].imageUrl} />
+      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[1].imageUrl} />
+      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[2].imageUrl} />
+    </View>
+    <View>
+      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[3].imageUrl} />
+    </View>
+  </View>
+);
+const Icon = ({ imgStyle, imgUrl }) => (
+  <TouchableOpacity>
+    <Image style={imgStyle} source={{ uri: imgUrl }} />
+  </TouchableOpacity>
+);
 const styles = StyleSheet.create({
   story: {
     width: 35,
@@ -44,5 +89,14 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     borderWidth: 1.5,
     borderColor: "#ff8501",
+  },
+  footerIcon: {
+    width: 33,
+    height: 33,
+  },
+  leftFooterIconsContainer: {
+    flexDirection: "row",
+    width: "32%",
+    justifyContent: "space-between",
   },
 });
