@@ -8,16 +8,12 @@ export const POSTS = [
     likes: 100,
     caption: "lorem ipsum",
     profile_picture: USERS[0].image,
-    comments: [
-      {
-        user: "test",
-        comment: "test123",
-      },
-      {
-        user: "test",
-        comment: "test123",
-      },
-    ],
+    // comments: [
+    //   {
+    //     user: "test",
+    //     comment: "test123",
+    //   },
+    // ],
   },
   {
     imageUrl:

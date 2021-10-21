@@ -36,6 +36,7 @@ export default function Post({ post }) {
         <PostFooter />
         <Likes post={post} />
         <Captions post={post} />
+        <CommentsSection post={post} />
       </View>
     </View>
   );
@@ -50,9 +51,9 @@ const PostHeader = ({ post }) => (
     }}
   >
     <View style={{ flexDirection: "row", alignItems: "center" }}>
-      <Image style={styles.story} source={{ uri: post.profile_picture }} />
+      <Image style={styles.story} source={{ uri: post?.profile_picture }} />
       <Text style={{ color: "#fff", marginLeft: 5, fontWeight: "700" }}>
-        {post.user}
+        {post?.user}
       </Text>
     </View>
     <Text style={{ color: "#fff", fontWeight: "900" }}> ...</Text>
@@ -61,7 +62,7 @@ const PostHeader = ({ post }) => (
 const PostImage = ({ post }) => (
   <View style={{ width: "100%", height: 450 }}>
     <Image
-      source={{ uri: post.imageUrl }}
+      source={{ uri: post?.imageUrl }}
       style={{ height: "100%", resizeMode: "cover" }}
     />
   </View>
@@ -69,12 +70,24 @@ const PostImage = ({ post }) => (
 const PostFooter = () => (
   <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
     <View style={styles.leftFooterIconsContainer}>
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[0].imageUrl} />
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[1].imageUrl} />
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[2].imageUrl} />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[0]?.imageUrl}
+      />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[1]?.imageUrl}
+      />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[2]?.imageUrl}
+      />
     </View>
     <View>
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[3].imageUrl} />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[3]?.imageUrl}
+      />
     </View>
   </View>
 );
@@ -85,20 +98,29 @@ const Icon = ({ imgStyle, imgUrl }) => (
 );
 const Likes = ({ post }) => (
   <View style={{ flexDirection: "row", marginTop: 4 }}>
-    <Text style={{ color: "#fff", fontWeight: 600 }}>
-      {post.likes.toLocaleString("en")} likes
-    </Text>
+    <Text style={{ color: "#fff", fontWeight: 600 }}> {post?.likes} likes</Text>
   </View>
 );
 const Captions = ({ post }) => (
-  <View style={{ flexDirection: "row", marginTop: 6 }}>
+  <View style={{ flexDirection: "row", marginTop: 5 }}>
     <Text style={{ color: "#fff" }}>
-      <Text style={{ fontWeight: "600" }}>{post.user}</Text>{" "}
-      <Text> {post.caption}</Text>
+      <Text style={{ fontWeight: "600" }}>{post?.user}</Text>
+      <Text> {post?.caption}</Text>
     </Text>
   </View>
 );
-const CommentsSection = ({ post }) => <View></View>;
+const CommentsSection = ({ post }) => (
+  <View style={{ marginTop: 6 }}>
+    {/*  if we have 0 comments it will work --> double negation --> !! */}
+    {!!post?.comments?.length && (
+      <Text style={{ color: "gray" }}>
+        View {post.comments.length > 1 ? "all" : ""}{" "}
+        {post.comments.length > 1 ? post.comments.length : 1}
+        {post.comments.length > 1 ? "  comments" : "comment"}
+      </Text>
+    )}
+  </View>
+);
 const styles = StyleSheet.create({
   story: {
     width: 35,
