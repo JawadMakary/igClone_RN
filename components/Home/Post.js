@@ -34,7 +34,7 @@ export default function Post({ post }) {
       <PostImage post={post} />
       <View style={{ marginHorizontal: 15, marginTop: 10 }}>
         <PostFooter />
-        <Likes post={post} />
+        <PostLikes post={post} />
         <Captions post={post} />
         <CommentsSection post={post} />
       </View>
@@ -96,9 +96,9 @@ const Icon = ({ imgStyle, imgUrl }) => (
     <Image style={imgStyle} source={{ uri: imgUrl }} />
   </TouchableOpacity>
 );
-const Likes = ({ post }) => (
-  <View style={{ flexDirection: "row", marginTop: 4 }}>
-    <Text style={{ color: "#fff", fontWeight: 600 }}> {post?.likes} likes</Text>
+const PostLikes = ({ post }) => (
+  <View style={{ marginTop: 5 }}>
+    <Text style={{ color: "#fff", fontWeight: "700" }}>{post.likes} likes</Text>
   </View>
 );
 const Captions = ({ post }) => (

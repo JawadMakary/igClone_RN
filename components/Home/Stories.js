@@ -6,9 +6,13 @@ const Stories = () => {
     <View style={{ marginBottom: 13, alignItems: "center" }}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {USERS.map((story, i) => (
-          <View key={i}>
+          <View key={i} style={{ alignItems: "center" }}>
             <Image source={{ uri: story.image }} style={styles.story} />
-            <Text style={{ color: "#fff" }}>
+            <Text
+              style={{
+                color: "#fff",
+              }}
+            >
               {story.user.length > 11
                 ? story.user.slice(0, 10).toLowerCase() + "..."
                 : story.user.toLowerCase()}
