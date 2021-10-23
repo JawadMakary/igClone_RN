@@ -37,6 +37,7 @@ export default function Post({ post }) {
         <PostLikes post={post} />
         <Captions post={post} />
         <CommentsSection post={post} />
+        <Comments post={post} />
       </View>
     </View>
   );
@@ -120,6 +121,18 @@ const CommentsSection = ({ post }) => (
       </Text>
     )}
   </View>
+);
+const Comments = ({ post }) => (
+  <>
+    {post.comments.map((comment, i) => (
+      <View key={i} style={{ flexDirection: "row", marginTop: 5 }}>
+        <Text style={{ color: "white" }}>
+          <Text style={{ fontWeight: "600" }}>{comment.user}</Text>{" "}
+          {comment.comment}
+        </Text>
+      </View>
+    ))}
+  </>
 );
 const styles = StyleSheet.create({
   story: {
