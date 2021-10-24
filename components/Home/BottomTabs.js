@@ -1,41 +1,37 @@
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Divider } from "react-native-elements";
 
 export const bottomTabsIcons = [
   {
     name: "Home",
-    active: "https://img.icons8.com/fluency-systems-filled/48/ffffff/home.png",
+    active: "https://img.icons8.com/fluency-systems-filled/144/ffffff/home.png",
     inactive:
       "https://img.icons8.com/fluency-systems-regular/48/ffffff/home.png",
   },
   {
     name: "Search",
-    active:
-      "https://img.icons8.com/fluency-systems-filled/48/ffffff/search.png",
-    inactive:
-      "https://img.icons8.com/fluency-systems-regular/48/ffffff/search--v1.png",
+    active: "https://img.icons8.com/ios-filled/500/ffffff/search--v1.png",
+    inactive: "https://img.icons8.com/ios/500/ffffff/search--v1.png",
   },
   {
     name: "Reels",
-    active:
-      "https://img.icons8.com/fluency-systems-filled/48/ffffff/streaming-video.png",
-    inactive:
-      "https://img.icons8.com/fluency-systems-regular/48/ffffff/streaming-video.png",
+    active: "https://img.icons8.com/ios-filled/50/ffffff/instagram-reel.png",
+    inactive: "https://img.icons8.com/ios/500/ffffff/instagram-reel.png",
   },
   {
     name: "Shop",
     active:
-      " https://img.icons8.com/fluency-systems-filled/48/ffffff/shopping-bag.png",
+      "https://img.icons8.com/fluency-systems-filled/48/ffffff/shopping-bag-full.png",
     inactive:
-      "https://img.icons8.com/fluency-systems-regular/48/ffffff/shopping-bag--v1.png",
+      "https://img.icons8.com/fluency-systems-regular/48/ffffff/shopping-bag-full.png",
   },
-
   {
     name: "Profile",
-    active: "https://avatars.githubusercontent.com/u/69002670?v=4",
+    active:
+      "https://yt3.ggpht.com/ytc/AKedOLRY9Un_v7Xr9dG1F5NEkqGsGSqwqRz0O3w3r1mI=s900-c-k-c0x00ffffff-no-rj",
     inactive:
-      "https://i.egycdn.com/pic/WmFwZndlY3ZOVFlqbXZtakVjbVRibUdOYm1FY2t3.jpg",
+      "https://yt3.ggpht.com/ytc/AKedOLRY9Un_v7Xr9dG1F5NEkqGsGSqwqRz0O3w3r1mI=s900-c-k-c0x00ffffff-no-rj",
   },
 ];
 export default function BottomTabs({ icons }) {
