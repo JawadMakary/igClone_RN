@@ -10,13 +10,16 @@ const uploadPostSchema = yup.object().shape({
 });
 const PLACEHOLDER_IMG =
   "https://th.bing.com/th/id/R.bed7fe8f284e8affe44d3dd817bdb8f2?rik=pMJJqkdyZG46SA&riu=http%3a%2f%2fwww.jennybeaumont.com%2fwp-content%2fuploads%2f2015%2f03%2fplaceholder.gif&ehk=3wTSmgFAHjHh1cl9Ay9w%2bNOsyhgED387BWJVO7Il2KI%3d&risl=&pid=ImgRaw&r=0";
-export default function FormikPostUploader() {
+export default function FormikPostUploader({ navigation }) {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
 
   return (
     <Formik
       initialValues={{ caption: "", imageUrl: "" }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+        navigation.goBack();
+      }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}
     >

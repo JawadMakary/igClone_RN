@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Header() {
+export default function Header({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -11,7 +11,7 @@ export default function Header() {
         />
       </TouchableOpacity>
       <View style={styles.iconContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push("newPostScreen")}>
           <Image
             source={{
               uri: "https://img.icons8.com/fluency-systems-regular/48/ffffff/plus.png",

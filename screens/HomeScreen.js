@@ -6,10 +6,10 @@ import Post from "../components/Home/Post";
 import Stories from "../components/Home/Stories";
 import { POSTS } from "../data/posts";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header navigation={navigation} />
       <Stories />
       <ScrollView>
         {POSTS.map((post, index) => (
