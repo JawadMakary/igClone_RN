@@ -1,11 +1,12 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import FormikPostUploader from "./FormikPostUploader";
 
 export default function AddNewPost() {
   return (
     <View style={styles.container}>
       <Header />
-      {/* PostForm */}
+      <FormikPostUploader />
     </View>
   );
 }
@@ -19,7 +20,8 @@ const Header = () => (
         style={{ width: 30, height: 30 }}
       />
     </TouchableOpacity>
-    <Text style={{ color: "#fff" }}>ADD NEW POST</Text>
+    <Text style={styles.headerText}> NEW POST</Text>
+    <Text></Text>
   </View>
 );
 const styles = StyleSheet.create({
@@ -30,5 +32,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  headerText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 20,
+    marginRight: 27.5,
   },
 });

@@ -5,7 +5,9 @@ import AddNewPost from "../components/Home/newPost/AddNewPost";
 export default function NewPostScreen() {
   return (
     <SafeAreaView style={{ backgroundColor: "black", flex: 1 }}>
-      <AddNewPost />
+      <View style={{ marginTop: 30 }}>
+        <AddNewPost />
+      </View>
     </SafeAreaView>
   );
 }
