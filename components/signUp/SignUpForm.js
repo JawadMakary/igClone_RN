@@ -11,9 +11,10 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
-export default function LoginForm() {
-  const loginFormSchema = yup.object().shape({
+export default function SignUpForm() {
+  const SignUpFormSchema = yup.object().shape({
     email: yup.string().email().required("An email address is required"),
+    username: yup.string().required().min(2, "A username is required"),
     password: yup
       .string()
       .required()
@@ -22,11 +23,11 @@ export default function LoginForm() {
   return (
     <View style={styles.wrapper}>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "", password: "", username: "" }}
         onSubmit={(values) => {
           console.log(values);
         }}
-        validationSchema={loginFormSchema}
+        validationSchema={SignUpFormSchema}
         validateOnMount={true}
       >
         {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
@@ -59,6 +60,29 @@ export default function LoginForm() {
                 styles.inputField,
                 {
                   borderColor:
+                    values.username.length < 1 || values.username.length >= 2
+                      ? "#ccc"
+                      : "red",
+                },
+              ]}
+            >
+              <TextInput
+                placeholderTextColor="#444"
+                placeholder="Username"
+                autoCapitalize="none"
+                keyboardType="default"
+                textContentType="username"
+                autoFocus={true}
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
+              />
+            </View>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
                     values.password.length < 1 || values.password.length >= 6
                       ? "#ccc"
                       : "red",
@@ -78,7 +102,7 @@ export default function LoginForm() {
               />
             </View>
             <View style={{ alignItems: "flex-end", marginBottom: 30 }}>
-              <Text style={{ color: "#6bb0f5" }}>Forgot password?</Text>
+              {/* <Text style={{ color: "#6bb0f5" }}>Forgot password?</Text> */}
             </View>
             <Pressable
               onPress={handleSubmit}
@@ -86,12 +110,12 @@ export default function LoginForm() {
               style={styles.button}
               disabled={!isValid}
             >
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>Sign Up</Text>
             </Pressable>
             <View style={styles.signUpContainer}>
-              <Text>Don't have an account? </Text>
+              <Text>Already have an account? </Text>
               <TouchableOpacity>
-                <Text style={{ color: "#6bb0f5" }}>Sign Up</Text>
+                <Text style={{ color: "#6bb0f5" }}>Login</Text>
               </TouchableOpacity>
             </View>
           </>
