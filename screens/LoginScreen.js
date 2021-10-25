@@ -9,7 +9,7 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.logoContainer}>
         <Image source={{ uri: IG_LOGO, width: 100, height: 100 }} />
       </View>
-      <LoginForm />
+      <LoginForm navigation={navigation} />
     </View>
   );
 }

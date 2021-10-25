@@ -11,7 +11,7 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
-export default function LoginForm() {
+export default function LoginForm({ navigation }) {
   const loginFormSchema = yup.object().shape({
     email: yup.string().email().required("An email address is required"),
     password: yup
@@ -90,7 +90,7 @@ export default function LoginForm() {
             </Pressable>
             <View style={styles.signUpContainer}>
               <Text>Don't have an account? </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.push("signUpScreen")}>
                 <Text style={{ color: "#6bb0f5" }}>Sign Up</Text>
               </TouchableOpacity>
             </View>

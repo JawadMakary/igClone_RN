@@ -10,7 +10,7 @@ export default function SignUpScreen({ navigation }) {
       <View style={styles.logoContainer}>
         <Image source={{ uri: IG_LOGO, width: 100, height: 100 }} />
       </View>
-      <SignUpForm />
+      <SignUpForm navigation={navigation} />
     </View>
   );
 }
