@@ -17,7 +17,7 @@ export default function LoginForm() {
     password: yup
       .string()
       .required()
-      .min(8, "your password has to have at least 8 characters"),
+      .min(8, "your password has to have at least 6 characters"),
   });
   return (
     <View style={styles.wrapper}>
@@ -31,7 +31,17 @@ export default function LoginForm() {
       >
         {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
           <>
-            <View style={styles.inputField}>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    values.email.length < 1 || Validator.validate(values.email)
+                      ? "#ccc"
+                      : "red",
+                },
+              ]}
+            >
               <TextInput
                 placeholderTextColor="#444"
                 placeholder="Phone number, username or E-mail address"
@@ -39,9 +49,22 @@ export default function LoginForm() {
                 keyboardType="email-address"
                 textContentType="emailAddress"
                 autoFocus={true}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
               />
             </View>
-            <View style={styles.inputField}>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    values.password.length < 1 || values.password.length >= 6
+                      ? "#ccc"
+                      : "red",
+                },
+              ]}
+            >
               <TextInput
                 placeholderTextColor="#444"
                 placeholder="Password"
@@ -49,12 +72,20 @@ export default function LoginForm() {
                 autoCorrect={false}
                 secureTextEntry={true}
                 textContentType="password"
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
               />
             </View>
             <View style={{ alignItems: "flex-end", marginBottom: 30 }}>
               <Text style={{ color: "#6bb0f5" }}>Forgot password?</Text>
             </View>
-            <Pressable titleSize={20} style={styles.button}>
+            <Pressable
+              onPress={handleSubmit}
+              titleSize={20}
+              style={styles.button}
+              disabled={!isValid}
+            >
               <Text style={styles.buttonText}>Login</Text>
             </Pressable>
             <View style={styles.signUpContainer}>
