@@ -1,42 +1,71 @@
-import React from "react";
-import { Button, Pressable, TouchableOpacity } from "react-native";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-
+import React, { useState } from "react";
+import {
+  Button,
+  Pressable,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import { Formik } from "formik";
+import * as yup from "yup";
+import Validator from "email-validator";
 export default function LoginForm() {
+  const loginFormSchema = yup.object().shape({
+    email: yup.string().email().required("An email address is required"),
+    password: yup
+      .string()
+      .required()
+      .min(8, "your password has to have at least 8 characters"),
+  });
   return (
     <View style={styles.wrapper}>
-      <View style={styles.inputField}>
-        <TextInput
-          placeholderTextColor="#444"
-          placeholder="Phone number, username or E-mail address"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          textContentType="emailAddress"
-          autoFocus={true}
-        />
-      </View>
-      <View style={styles.inputField}>
-        <TextInput
-          placeholderTextColor="#444"
-          placeholder="Password"
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry={true}
-          textContentType="password"
-        />
-      </View>
-      <View style={{ alignItems: "flex-end", marginBottom: 30 }}>
-        <Text style={{ color: "#6bb0f5" }}>Forgot password?</Text>
-      </View>
-      <Pressable titleSize={20} style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
-      </Pressable>
-      <View style={styles.signUpContainer}>
-        <Text>Don't have an account? </Text>
-        <TouchableOpacity>
-          <Text style={{ color: "#6bb0f5" }}>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+        validationSchema={loginFormSchema}
+        validateOnMount={true}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
+          <>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholderTextColor="#444"
+                placeholder="Phone number, username or E-mail address"
+                autoCapitalize="none"
+                keyboardType="email-address"
+                textContentType="emailAddress"
+                autoFocus={true}
+              />
+            </View>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholderTextColor="#444"
+                placeholder="Password"
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry={true}
+                textContentType="password"
+              />
+            </View>
+            <View style={{ alignItems: "flex-end", marginBottom: 30 }}>
+              <Text style={{ color: "#6bb0f5" }}>Forgot password?</Text>
+            </View>
+            <Pressable titleSize={20} style={styles.button}>
+              <Text style={styles.buttonText}>Login</Text>
+            </Pressable>
+            <View style={styles.signUpContainer}>
+              <Text>Don't have an account? </Text>
+              <TouchableOpacity>
+                <Text style={{ color: "#6bb0f5" }}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+      </Formik>
     </View>
   );
 }
