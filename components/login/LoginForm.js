@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import firebase from "../../firebase";
 import {
   Button,
   Pressable,
@@ -7,6 +8,7 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
 } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -19,12 +21,21 @@ export default function LoginForm({ navigation }) {
       .required()
       .min(6, "your password has to have at least 6 characters"),
   });
+  const onLogin = async (email, password) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      console.log("Login Succesfull with these creds", email, password);
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
   return (
     <View style={styles.wrapper}>
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => {
-          console.log(values);
+          // console.log(values);
+          onLogin(values.email, values.password);
         }}
         validationSchema={loginFormSchema}
         validateOnMount={true}
