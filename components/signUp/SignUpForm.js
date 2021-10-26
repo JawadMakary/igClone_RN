@@ -7,7 +7,9 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
 } from "react-native";
+import firebase from "../../firebase";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
@@ -20,12 +22,21 @@ export default function SignUpForm({ navigation }) {
       .required()
       .min(6, "your password has to have at least 6 characters"),
   });
+  const onSignUp = async (email, password) => {
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      console.log("new acc created", email, password);
+    } catch (err) {
+      Alert.alert(err.message);
+    }
+  };
   return (
     <View style={styles.wrapper}>
       <Formik
         initialValues={{ email: "", password: "", username: "" }}
         onSubmit={(values) => {
-          console.log(values);
+          //   console.log(values);
+          onSignUp(values.email, values.password);
         }}
         validationSchema={SignUpFormSchema}
         validateOnMount={true}
