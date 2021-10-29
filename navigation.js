@@ -24,5 +24,15 @@ const SignedInStack = () => (
     </Stack.Navigator>
   </NavigationContainer>
 );
-
+export const signedOutStack = () => (
+  <NavigationContainer>
+    <Stack.Navigator
+      initialRouteName="loginScreen"
+      screenOptions={screenOptions}
+    >
+      <Stack.Screen name="loginScreen" component={LoginScreen} />
+      <Stack.Screen name="signUpScreen" component={SignUpScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 export default SignedInStack;
