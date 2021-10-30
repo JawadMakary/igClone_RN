@@ -29,9 +29,9 @@ export const bottomTabsIcons = [
   {
     name: "Profile",
     active:
-      "https://yt3.ggpht.com/ytc/AKedOLRY9Un_v7Xr9dG1F5NEkqGsGSqwqRz0O3w3r1mI=s900-c-k-c0x00ffffff-no-rj",
+      "https://avatars.githubusercontent.com/u/69002670?s=400&u=d58acad571c15f54f3e0afdc4084bc1afd0c02ac&v=4",
     inactive:
-      "https://yt3.ggpht.com/ytc/AKedOLRY9Un_v7Xr9dG1F5NEkqGsGSqwqRz0O3w3r1mI=s900-c-k-c0x00ffffff-no-rj",
+      "https://avatars.githubusercontent.com/u/69002670?s=400&u=d58acad571c15f54f3e0afdc4084bc1afd0c02ac&v=4",
   },
 ];
 export default function BottomTabs({ icons }) {

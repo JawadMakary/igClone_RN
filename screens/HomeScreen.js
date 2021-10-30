@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, ScrollView } from "react-native";
 import BottomTabs, { bottomTabsIcons } from "../components/Home/BottomTabs";
 import Header from "../components/Home/Header";
@@ -8,12 +8,13 @@ import { POSTS } from "../data/posts";
 import { db } from "../firebase";
 
 export default function HomeScreen({ navigation }) {
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     // collectionGroup--->posts--> subCollection in users
     //  one specific user can have a collection of posts that he owns
     //  each post subcollection can have caption,comment for example
     db.collectionGroup("posts").onSnapshot((snapshot) => {
-      console.log(snapshot.docs.map((doc) => doc.data()));
+      setPosts(snapshot.docs.map((post) => ({ id: post.id, ...post.data() })));
     });
   }, []);
   return (
@@ -21,8 +22,8 @@ export default function HomeScreen({ navigation }) {
       <Header navigation={navigation} />
       <Stories />
       <ScrollView>
-        {POSTS.map((post, index) => (
-          <Post post={post} key={index} />
+        {posts.map((posts, index) => (
+          <Post post={posts} key={index} />
         ))}
       </ScrollView>
       <BottomTabs icons={bottomTabsIcons} />

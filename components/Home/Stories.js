@@ -14,7 +14,7 @@ const Stories = () => {
               }}
             >
               {story.user.length > 11
-                ? story.user.slice(0, 10).toLowerCase() + "..."
+                ? story.user.slice(0, 6).toLowerCase() + "..."
                 : story.user.toLowerCase()}
             </Text>
           </View>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginLeft: 6,
+    marginLeft: 8,
     borderWidth: 3,
     borderColor: "#ff8501",
   },
